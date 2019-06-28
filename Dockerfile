@@ -64,18 +64,16 @@ RUN wget https://bootstrap.pypa.io/get-pip.py && \
 # Clone TensoFlow from Mozilla repo
 RUN git clone https://github.com/mozilla/tensorflow/
 WORKDIR /tensorflow
-RUN git checkout r1.13
+RUN git checkout r1.14
 
 
 # GPU Environment Setup
 ENV TF_NEED_CUDA 1
-ENV CUDA_TOOLKIT_PATH /usr/local/cuda
+ENV TF_CUDA_PATHS "/usr/local/cuda,/usr/lib/x86_64-linux-gnu/"
 ENV TF_CUDA_VERSION 10.0
 ENV TF_CUDNN_VERSION 7
-ENV CUDNN_INSTALL_PATH /usr/lib/x86_64-linux-gnu/
 ENV TF_CUDA_COMPUTE_CAPABILITIES 6.0
 ENV TF_NCCL_VERSION 2.3
-# ENV NCCL_INSTALL_PATH /usr/lib/x86_64-linux-gnu/
 
 # Common Environment Setup
 ENV TF_BUILD_CONTAINER_TYPE GPU
@@ -189,7 +187,7 @@ RUN cp /tensorflow/bazel-bin/native_client/generate_trie /DeepSpeech/native_clie
 
 # Install TensorFlow
 WORKDIR /DeepSpeech/
-RUN pip3 install tensorflow-gpu==1.13.1
+RUN pip3 install tensorflow-gpu==1.14.0
 
 
 # Make DeepSpeech and install Python bindings
