@@ -12,7 +12,7 @@ build:
   system_config:
     >
       ${swig.patch_nodejs.linux}
-  tensorflow: "https://index.taskcluster.net/v1/task/project.deepspeech.tensorflow.pip.r1.13.174b4760eb1cba50482ed7d890e654060d360e4b.gpu/artifacts/public/home.tar.xz"
+  tensorflow: "https://queue.taskcluster.net/v1/task/G0_jPMNsSwiVd7xnNepwrg/artifacts/public/home.tar.xz"
   maxRunTime: 14400
   scripts:
     build: "taskcluster/cuda-build.sh"
